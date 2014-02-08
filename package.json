@@ -1,7 +1,7 @@
 {
-  "name": "YOUR-PROJECT-NAME-HERE",
-  "description": "YOUR PROJECT DESCRIPTION HERE",
-  "author": "YOUR NAME <your@emailaddress.com>",
+  "name": "Swiggly",
+  "description": "Money flows through highways directly into our pockets",
+  "author": "Pete Kim <hyun_sik_kim@brown.edu>",
   "version": "0.0.1",
   "dependencies": {
     "connect": "1.8.5",
