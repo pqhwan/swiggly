@@ -2,7 +2,24 @@
 var connect = require('connect')
     , express = require('express')
     , io = require('socket.io')
+		, mongoose = require('mongoose')
     , port = (process.env.PORT || 8081);
+
+
+/* failed attempt at connecting to mongodb :(
+mongoose.connect('mongodb://localhost/test');
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function callback(){
+	console.log('success');
+
+	var testSchema = mongoose.Schema({
+		name: String
+	});
+
+	var Kitten = mongoose.model('Kitten', testSchema);
+});
+*/
 
 //Setup Express
 var server = express.createServer();
@@ -35,10 +52,11 @@ server.error(function(err, req, res, next){
                 },status: 500 });
     }
 });
-server.listen( port);
+server.listen(port);
 
 //Setup Socket.IO
 var io = io.listen(server);
+//when client connects with a socket
 io.sockets.on('connection', function(socket){
   console.log('Client Connected');
   socket.on('message', function(data){
@@ -60,7 +78,7 @@ io.sockets.on('connection', function(socket){
 server.get('/', function(req,res){
   res.render('index.jade', {
     locals : { 
-              title : 'Your Page Title'
+              title : 'hello'
              ,description: 'Your Page Description'
              ,author: 'Your Name'
              ,analyticssiteid: 'XXXXXXX' 
